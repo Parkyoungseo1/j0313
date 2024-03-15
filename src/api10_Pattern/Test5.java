@@ -3,34 +3,36 @@ package api10_Pattern;
 import java.util.regex.Pattern;
 
 // 문자열 정규식...('?'는 0번이나 1번, '+'는 1번 이상, '*'는 0번 이상)
-public class Test4 {
+// w = 영문대소문자/숫자/_(밑줄)
+public class Test5 {
 	public static void main(String[] args) {
-		String regEx1 = "^[abc]*$";		// a또는 b또는 c문자만 포함?  ^[abc]*$ , ^[a|b|c]*$
-		String regEx2 = "^[a-z]+$";		// 영문 소문자만 0번 이상.
-		String regEx3 = "^[A-Z]+$";		// 영문 대문자만 0번 이상.
-		String regEx4 = "^[a-zA-Z]*$";		// 영문 대/소문자만 0번 이상.
-		String regEx5 = "^[가-힣]*$";		// 한글만 0번 이상.
-		String regEx6 = "^[a-zA-Z가-힣]*$";		// 영문대/소문자/한글만 0번이상.
-		String regEx7 = "^[a-zA-Z가-힣 ]*$";		// 영문대/소문자/한글/공백 0번이상.
-		String regEx8 = "^[a-zA-Z가-힣0-9 ]*$";		// 영문대/소문자/한글/공백/숫자 0번이상.
-		String regEx9 = "^[a-zA-Z가-힣0-9_-]*$";		// 영문대/소문자/한글/공백/숫자 0번이상.
-		
+		String regEx1 = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\\.[a-z]+$";		
+		String regEx2 = "^[a-zA-Z0-9_-]{3,}@[a-zA-Z0-9]+\\.[a-z]+$";		
+		String regEx3 = "^[a-zA-Z0-9_-]{3,12}@[a-zA-Z0-9]+\\.[a-z]+$";		
+		String regEx4 = "^[a-zA-Z0-9_-]{3,12}@[a-zA-Z0-9]+\\.[a-z]+\\.[a-z]*$";		
+		String regEx5 = "^[a-zA-Z0-9_-]{3,12}@[a-zA-Z0-9]+\\.[a-z]+(\\.[a-z])*$";	//?	
+		String regEx6 = "^[a-zA-Z0-9_-]{3,12}@[a-zA-Z0-9]+(\\.[a-z]+)$";		      //O
+		String regEx7 = "\\w+@\\w+\\.\\w+";
+		String regEx8 = "\\w+@[a-zA-Z0-9]+\\.[a-z]+";
+		String regEx9 = "\\w+{3,}@[a-zA-Z0-9]{1,8}\\.[a-z]{1,4}";
+				
 		String str00 = "";
-		String str01 = "1234";
-		String str02 = "1234ghjk";
-		String str03 = "aaa";
-		String str04 = "bc";
-		String str05 = "asdc";
-		String str06 = "AS-DF";
-		String str07 = "asDf";
-		String str08 = "abcsDf";
-		String str09 = "abc   ";	// 공백(Space)
-		String str10 = "abc		";	// 탭(Tab)
-		String str11 = "ㄱ";
-		String str12 = "그린컴퓨터";
-		String str13 = "그린 컴퓨터";
-		String str14 = "그린 Computer";
-		String str15 = "그린2_Computer2";
+		String str01 = "atom@naver.com";
+		String str02 = "atom1234@naver.com";
+		String str03 = "atom_1234@naver.com";
+		String str04 = "atom!1234@naver.com";
+		String str05 = "atom 1234@naver.com";
+		String str06 = "atOM1234123412341234@naver.com";
+		String str07 = "a@naver.com";
+		String str08 = "at_OM1234@naver.com";
+		String str09 = "atom@naver.co.kr";
+		String str10 = "_at-om@naver.co.kr";
+		String str11 = "_at-om@naver.COM";
+		String str12 = "_at-om@naver!.COM";
+		String str13 = "_atom@na_ver.com";
+		String str14 = "_at-om@na_ver1234.com";
+		String str15 = "atom@naver.com";
+		
 		
 		System.out.println("1:00= " + Pattern.matches(regEx1, str00));
 		System.out.println("1:01= " + Pattern.matches(regEx1, str01));
